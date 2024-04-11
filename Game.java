@@ -44,4 +44,6 @@ public class Game {
     public void addDiscount (KortingGame kortingGame) {
         korting.add (kortingGame);
     }
+    public void TESTETSTETTET {
+            }
 }
