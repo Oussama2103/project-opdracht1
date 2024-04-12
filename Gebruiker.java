@@ -17,15 +17,14 @@ public class Gebruiker {
         this.username = username;
     }
 
-        public void bekijkReviews(Eigenaar eigenaar) {
-            List<Review> reviews = eigenaar.bekijkReviews();
-            for (Review review : reviews) {
-                System.out.println("graphicScore: " + review.getGraphicsScore());
-                System.out.println("gameplayScore: " + review.getGameplayScore());
-                System.out.println("storylineScore: " + review.getStorylineScore());
-                System.out.println("feedback: " + review.getFeedback());
-                System.out.println("vragenlijst: " + review.getVragenlijst());
-            }
+    public void bekijkReviews(Eigenaar eigenaar) {
+        List<Review> reviews = eigenaar.bekijkReviews();
+        for (Review review : reviews) {
+            System.out.println("graphicScore: " + review.getGraphicsScore());
+            System.out.println("gameplayScore: " + review.getGameplayScore());
+            System.out.println("storylineScore: " + review.getStorylineScore());
+            System.out.println("feedback: " + review.getFeedback());
+            System.out.println("vragenlijst: " + review.getVragenlijst());
         }
     }
 }
