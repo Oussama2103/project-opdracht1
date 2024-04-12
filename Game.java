@@ -37,4 +37,5 @@ class Game {
     public void setPrice(double price) {
         this.price = price;
     }
+
 }
