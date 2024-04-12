@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Review {
     private int graphicsScore;
     private int gameplayScore;
@@ -5,7 +8,7 @@ public class Review {
     private String feedback;
     private Vragenlijst vragenlijst;
 
-    public Review (int graphicsScore, int gameplayScore, int storylineScore, String feedback, Vragenlijst vragenlijst) {
+    public Review(int graphicsScore, int gameplayScore, int storylineScore, String feedback, Vragenlijst vragenlijst) {
         this.graphicsScore = graphicsScore;
         this.gameplayScore = gameplayScore;
         this.storylineScore = storylineScore;
@@ -13,7 +16,6 @@ public class Review {
         this.vragenlijst = vragenlijst;
     }
 
-    //setters
 
     public void setGraphicsScore(int graphicsScore) {
         this.graphicsScore = graphicsScore;
@@ -35,7 +37,6 @@ public class Review {
         this.vragenlijst = vragenlijst;
     }
 
-    //getters
 
     public int getGraphicsScore() {
         return graphicsScore;
@@ -56,4 +57,9 @@ public class Review {
     public Vragenlijst getVragenlijst() {
         return vragenlijst;
     }
+
+    public void voegVragenlijst(Vragenlijst vragenlijst) {
+        this.vragenlijst = vragenlijst;
+    }
 }
+
