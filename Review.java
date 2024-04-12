@@ -1,41 +1,15 @@
-public class Review {
+class Review {
     private int graphicsScore;
     private int gameplayScore;
     private int storylineScore;
-    private String feedback;
-    private Vragenlijst vragenlijst;
+    private String comment;
 
-    public Review (int graphicsScore, int gameplayScore, int storylineScore, String feedback, Vragenlijst vragenlijst) {
+    public Review(int graphicsScore, int gameplayScore, int storylineScore, String comment) {
         this.graphicsScore = graphicsScore;
         this.gameplayScore = gameplayScore;
         this.storylineScore = storylineScore;
-        this.feedback = feedback;
-        this.vragenlijst = vragenlijst;
+        this.comment = comment;
     }
-
-    //setters
-
-    public void setGraphicsScore(int graphicsScore) {
-        this.graphicsScore = graphicsScore;
-    }
-
-    public void setGameplayScore(int gameplayScore) {
-        this.gameplayScore = gameplayScore;
-    }
-
-    public void setStorylineScore(int storylineScore) {
-        this.storylineScore = storylineScore;
-    }
-
-    public void setFeedback(String feedback) {
-        this.feedback = feedback;
-    }
-
-    public void setVragenlijst(Vragenlijst vragenlijst) {
-        this.vragenlijst = vragenlijst;
-    }
-
-    //getters
 
     public int getGraphicsScore() {
         return graphicsScore;
@@ -49,11 +23,7 @@ public class Review {
         return storylineScore;
     }
 
-    public String getFeedback() {
-        return feedback;
-    }
-
-    public Vragenlijst getVragenlijst() {
-        return vragenlijst;
+    public String getComment() {
+        return comment;
     }
 }

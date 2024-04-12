@@ -1,47 +1,40 @@
+import java.util.List;
 import java.util.ArrayList;
 
-public class Game {
+class Game {
     private String name;
-    private double prijs;
-    private ArrayList <Review> reviews = new ArrayList<Review>();
-    private ArrayList <KortingGame> korting = new ArrayList<KortingGame>();
+    private double price;
+    private List<Review> reviews;
 
-    public Game (String name, double prijs) {
+    public Game(String name, double price) {
         this.name = name;
-        this.prijs = prijs;
+        this.price = price;
+        this.reviews = new ArrayList<>();
     }
 
     public String getName() {
         return name;
     }
 
-    public double getPrijs() {
-        return prijs;
+    public double getPrice() {
+        return price;
     }
 
-    public ArrayList<Review> getReviews() {
+    public void addReview(Review review) {
+        reviews.add(review);
+    }
+
+    public void removeReview(int index) {
+        if (index >= 0 && index < reviews.size()) {
+            reviews.remove(index);
+        }
+    }
+
+    public List<Review> getReviews() {
         return reviews;
     }
 
-    public ArrayList<KortingGame> getKorting() {
-        return korting;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setPrijs(double prijs) {
-        this.prijs = prijs;
-    }
-
-
-
-    public void reviewToevoegen (Review review) {
-        reviews.add (review);
-    }
-
-    public void addDiscount (KortingGame kortingGame) {
-        korting.add (kortingGame);
+    public void setPrice(double price) {
+        this.price = price;
     }
 }
