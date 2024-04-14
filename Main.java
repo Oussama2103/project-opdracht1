@@ -7,7 +7,11 @@ public class Main {
         boolean running = true;
         boolean isOwner = false;
 
-        GoodOldGames goodOldGames = new GoodOldGames(); // Maak een instantie van GoodOldGames
+        Aanmaken aanmaken = Aanmaken.getAanmaken();
+        aanmaken.run();
+
+
+        GoodOldGames goodOldGames = new GoodOldGames(Aanmaken.games); // Maak een instantie van GoodOldGames
 
         while (running) {
             System.out.println("Welkom bij Good ol' Games!");
@@ -24,7 +28,9 @@ public class Main {
                     handleOwnerActions(scanner, goodOldGames); // Voer acties voor eigenaar uit
                     break;
                 case 2:
-                    handleUserActions(scanner, goodOldGames); // Voer acties voor gebruiker uit
+                    scanner.nextLine();
+                    handleUserActions(scanner, goodOldGames);
+                    // Voer acties voor gebruiker uit
                     break;
                 case 3:
                     running = false;
@@ -66,7 +72,7 @@ public class Main {
                         writeReview(scanner, goodOldGames);
                         break;
                     case 3:
-                        displayAvailableGames(goodOldGames);
+                        goodOldGames.getAvailableGames();
                         break;
                     case 4:
                         userRunning = false;
@@ -81,27 +87,22 @@ public class Main {
         }
     }
 
-    private static void displayAvailableGames(GoodOldGames goodOldGames) {
-        System.out.println("Beschikbare spellen om een review voor te schrijven:");
-        for (String game : goodOldGames.getAvailableGames()) {
-            System.out.println(game);
-        }
-    }
+
 
     private static void writeReview(Scanner scanner, GoodOldGames goodOldGames) {
         System.out.println("Voer de naam van het spel in: ");
-        String gameName = scanner.next();
+        String gameName = scanner.nextLine();
 
         // Controleer of het spel bestaat voordat we een review toevoegen
         if (goodOldGames.gameExists(gameName)) {
             System.out.print("Voer de score voor graphics in (1-10): ");
-            int graphicsScore = scanner.nextInt();
+            int graphicsScore = Integer.parseInt(scanner.nextLine());
 
             System.out.print("Voer de score voor gameplay in (1-10): ");
-            int gameplayScore = scanner.nextInt();
+            int gameplayScore = Integer.parseInt(scanner.nextLine());
 
             System.out.print("Voer de score voor verhaallijn in (1-10): ");
-            int storylineScore = scanner.nextInt();
+            int storylineScore = Integer.parseInt(scanner.nextLine());
 
             // Voeg de review toe aan het spel
             goodOldGames.addReview(gameName, new Review(graphicsScore, gameplayScore, storylineScore, ""));
@@ -184,7 +185,7 @@ public class Main {
                     goodOldGames.editReview(gameNameToEditReview, reviewIndexToEdit, newReviewText);
                     break;
                 case 4:
-                    displayAvailableGames(goodOldGames);
+                    goodOldGames.displayAvailableGames();
                     break;
                 case 5:
                     ownerRunning = false;

@@ -1,21 +1,23 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class GoodOldGames {
-    private Map<String, Game> retroGames;
+    private Map<String, Game> games;
 
-    public GoodOldGames() {
-        this.retroGames = new HashMap<>();
+    public GoodOldGames(List<Game> gamesList) {
+        this.games = new HashMap<>();
+        for (Game game : gamesList) {
+            this.games.put(game.getName(), game);
+        }
     }
 
     public void addGame(String name, double price) {
-        retroGames.put(name, new Game(name, price));
+        games.put(name, new Game(name, price));
     }
 
     public void addReview(String gameName, Review review) {
-        Game game = retroGames.get(gameName);
+        Game game = games.get(gameName);
         if (game != null) {
             game.addReview(review);
             System.out.println("Review toegevoegd.");
@@ -25,7 +27,7 @@ public class GoodOldGames {
     }
 
     public void displayReviews(String gameName) {
-        Game game = retroGames.get(gameName);
+        Game game = games.get(gameName);
         if (game != null) {
             List<Review> reviews = game.getReviews();
             if (!reviews.isEmpty()) {
@@ -48,7 +50,7 @@ public class GoodOldGames {
     }
 
     public void deleteReview(String gameName, int index) {
-        Game game = retroGames.get(gameName);
+        Game game = games.get(gameName);
         if (game != null) {
             game.removeReview(index - 1);
             System.out.println("Review verwijderd.");
@@ -58,7 +60,7 @@ public class GoodOldGames {
     }
 
     public void editReview(String gameName, int index, String newReviewText) {
-        Game game = retroGames.get(gameName);
+        Game game = games.get(gameName);
         if (game != null) {
             List<Review> reviews = game.getReviews();
             if (index >= 0 && index < reviews.size()) {
@@ -73,17 +75,25 @@ public class GoodOldGames {
             System.out.println("Spel niet gevonden.");
         }
     }
-    public List<String> getAvailableGames() {
-        List<String> availableGames = new ArrayList<>();
-        for (Game game : retroGames.values()) {
-            availableGames.add(game.getName());
+
+    public void getAvailableGames() {
+        System.out.println("Beschikbare spellen om een review voor te schrijven:");
+        for (Game game : games.values()) {
+            System.out.println(game.getName());
         }
-        return availableGames;
     }
+    public void displayAvailableGames() {
+        System.out.println("Beschikbare spellen om een review voor te schrijven:");
+        for (String gameName : games.keySet()) {
+            System.out.println(gameName);
+        }
+    }
+
     public Game getGameByName(String gameName) {
-        return retroGames.get(gameName);
+        return games.get(gameName);
     }
+
     public boolean gameExists(String gameName) {
-        return retroGames.containsKey(gameName);
+        return games.containsKey(gameName);
     }
 }

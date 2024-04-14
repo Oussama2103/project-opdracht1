@@ -4,6 +4,7 @@ import java.util.ArrayList;
 class Game {
     private String name;
     private double price;
+
     private List<Review> reviews;
 
     public Game(String name, double price) {
